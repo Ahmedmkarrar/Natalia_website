@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VONA Skincare — Your Skin Deserves the Best</title>
+  <meta name="description" content="VONA Skincare offers personalized, luxury skincare treatments including facials, chemical peels, and advanced anti-aging therapies. Book your glow today.">
+  <meta name="theme-color" content="#FAF7F2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════
+       RESET & FOUNDATIONS
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FAF7F2;
+      --sand: #D4C5B0;
+      --blush: #E8B4A0;
+      --taupe: #5C4A3A;
+      --white: #FFFFFF;
+      --taupe-light: #7A6655;
+      --taupe-dark: #4A3A2C;
+      --taupe-darker: #3B2E22;
+      --blush-light: #F0CBBC;
+      --blush-pale: #F7E0D5;
+      --cream-dark: #F0EBE3;
+      --sand-light: #E8DDD0;
+      --gold-soft: #C4A87C;
+      --heading: 'Playfair Display', Georgia, serif;
+      --body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w: 1200px;
+      --pad: clamp(80px, 12vw, 140px);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out: cubic-bezier(0, 0, 0.2, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    body {
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--taupe);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* Subtle grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.018;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+
+    ::selection { background: rgba(232,180,160,0.3); color: var(--taupe); }
+
+    /* ═══════════════════════════════════════════
+       TYPOGRAPHY
+    ═══════════════════════════════════════════ */
+    h1, h2, h3, h4 { font-family: var(--heading); font-weight: 500; line-height: 1.12; }
+
+    .section-label {
+      font-family: var(--body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      color: var(--taupe);
+      margin-bottom: 18px;
+      letter-spacing: -0.015em;
+    }
+
+    .section-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: var(--taupe-light);
+      font-weight: 300;
+      max-width: 520px;
+      margin: 0 auto 60px;
+      line-height: 1.8;
+    }
+
+    /* ═══════════════════════════════════════════
+       BUTTONS
+    ═══════════════════════════════════════════ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-family: var(--body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 18px 42px;
+      border-radius: 60px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.45s var(--ease);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: -1;
+    }
+
+    .btn:hover::after { opacity: 1; }
+
+    .btn-primary { background: var(--taupe); color: var(--white); }
+    .btn-primary:hover {
+      background: var(--taupe-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(92,74,58,0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--taupe);
+      border: 1.5px solid rgba(212,197,176,0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-secondary:hover {
+      background: var(--taupe);
+      color: var(--white);
+      border-color: var(--taupe);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(92,74,58,0.2);
+    }
+
+    .btn-white { background: var(--white); color: var(--taupe); font-weight: 600; }
+    .btn-white:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.15);
+    }
+
+    .btn-card {
+      font-size: 12px;
+      padding: 14px 32px;
+      background: var(--taupe);
+      color: var(--white);
+      letter-spacing: 0.1em;
+    }
+
+    .btn-card:hover {
+      background: var(--taupe-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(92,74,58,0.25);
+    }
+
+    .btn-arrow {
+      display: inline-block;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .btn:hover .btn-arrow { transform: translateX(5px); }
+
+    /* ═══════════════════════════════════════════
+       DIVIDERS
+    ═══════════════════════════════════════════ */
+    .divider {
+      width: 50px;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--blush), var(--sand));
+      margin: 28px auto;
+      border-radius: 1px;
+    }
+
+    /* ═══════════════════════════════════════════
+       SCROLL ANIMATIONS
+    ═══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+    .d5 { transition-delay: 0.4s; }
+    .d6 { transition-delay: 0.48s; }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 24px 0;
+      transition: all 0.5s var(--ease);
+    }
+
+    .nav.scrolled {
+      background: rgba(250,247,242,0.88);
+      backdrop-filter: blur(28px) saturate(200%);
+      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      padding: 14px 0;
+      box-shadow: 0 1px 0 rgba(212,197,176,0.15);
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--heading);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--taupe);
+      letter-spacing: 0.08em;
+    }
+
+    .nav-logo span { color: var(--blush); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-links a:not(.btn) {
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--taupe);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a:not(.btn)::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      width: 0;
+      height: 1.5px;
+      background: var(--blush);
+      transition: all 0.35s var(--ease);
+      transform: translateX(-50%);
+    }
+
+    .nav-links a:not(.btn):hover::after { width: 100%; }
+
+    .nav-links .btn { padding: 12px 28px; font-size: 11px; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 1002;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 1.5px;
+      background: var(--taupe);
+      transition: all 0.35s var(--ease);
+      border-radius: 2px;
+    }
+
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 5px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -5px); }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100dvh;
+        background: var(--cream);
+        flex-direction: column;
+        justify-content: center;
+        gap: 36px;
+        transition: right 0.5s var(--ease);
+        box-shadow: -20px 0 60px rgba(0,0,0,0.08);
+        z-index: 1001;
+      }
+
+      .nav-links.open { right: 0; }
+      .nav-links a:not(.btn) { font-size: 20px; }
+    }
+
+    .nav-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(59,46,34,0.4);
+      backdrop-filter: blur(4px);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+
+    .nav-overlay.active { opacity: 1; pointer-events: all; }
+
+    /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
+    .hero {
+      min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 60px 80px 0;
+      padding-left: max(24px, calc((100vw - var(--max-w)) / 2 + 24px));
+    }
+
+    .hero-tagline {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--blush);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: heroIn 1.2s var(--ease-out) 0.2s forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 400;
+      color: var(--taupe);
+      margin-bottom: 24px;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      opacity: 0;
+      animation: heroIn 1.2s var(--ease-out) 0.4s forwards;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--blush), var(--gold-soft));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      font-weight: 300;
+      color: var(--taupe-light);
+      max-width: 440px;
+      line-height: 1.85;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: heroIn 1.2s var(--ease-out) 0.6s forwards;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: heroIn 1.2s var(--ease-out) 0.8s forwards;
+    }
+
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(35px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero image side */
+    .hero-image-side {
+      position: relative;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    .hero-image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0;
+      animation: heroImgIn 1.4s var(--ease-out) 0.3s forwards;
+    }
+
+    @keyframes heroImgIn {
+      from { opacity: 0; transform: scale(1.08); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--cream) 0%, rgba(250,247,242,0) 30%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-image-overlay-bottom {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(250,247,242,0.15) 0%, transparent 30%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Floating badge on hero image */
+    .hero-float-badge {
+      position: absolute;
+      bottom: 80px;
+      right: 40px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+      padding: 24px 30px;
+      border-radius: var(--radius);
+      z-index: 3;
+      box-shadow: 0 20px 60px rgba(92,74,58,0.12);
+      opacity: 0;
+      animation: heroIn 1s var(--ease-out) 1.2s forwards;
+    }
+
+    .hero-float-badge-number {
+      font-family: var(--heading);
+      font-size: 2.2rem;
+      color: var(--taupe);
+      line-height: 1;
+    }
+
+    .hero-float-badge-text {
+      font-size: 12px;
+      color: var(--taupe-light);
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      z-index: 10;
+      opacity: 0;
+      animation: heroIn 1s var(--ease-out) 1.4s forwards;
+    }
+
+    .hero-scroll span {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sand);
+      font-weight: 500;
+    }
+
+    .scroll-indicator {
+      width: 1px;
+      height: 48px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(212,197,176,0.2);
+    }
+
+    .scroll-indicator::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--sand);
+      animation: scroll-drop 2s ease-in-out infinite;
+    }
+
+    @keyframes scroll-drop {
+      0% { top: -100%; }
+      100% { top: 100%; }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-content {
+        padding: 140px 24px 60px;
+        text-align: center;
+        order: 2;
+      }
+
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
+
+      .hero-image-side {
+        height: 50vh;
+        min-height: 360px;
+        order: 1;
+      }
+
+      .hero-image-overlay {
+        background: linear-gradient(180deg, rgba(250,247,242,0) 60%, var(--cream) 100%);
+      }
+
+      .hero-float-badge { bottom: auto; top: 24px; right: 24px; padding: 16px 20px; }
+      .hero-float-badge-number { font-size: 1.6rem; }
+      .hero-scroll { display: none; }
+    }
+
+    /* ═══════════════════════════════════════════
+       MARQUEE
+    ═══════════════════════════════════════════ */
+    .marquee {
+      padding: 18px 0;
+      background: var(--taupe);
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 35s linear infinite;
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 28px;
+      white-space: nowrap;
+      font-family: var(--heading);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .marquee-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--blush);
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    @keyframes marquee-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ═══════════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════════ */
+    .about {
+      padding: var(--pad) 0;
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual { position: relative; }
+
+    .about-img-wrapper {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      box-shadow: 0 32px 80px rgba(92,74,58,0.1);
+    }
+
+    .about-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-img-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(92,74,58,0.1) 100%);
+    }
+
+    /* Offset decorative frame */
+    .about-frame {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      bottom: 18px;
+      left: 18px;
+      border: 1.5px solid var(--sand);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--white);
+      padding: 24px 32px;
+      border-radius: var(--radius);
+      box-shadow: 0 16px 48px rgba(92,74,58,0.1);
+      z-index: 2;
+    }
+
+    .about-badge-number {
+      font-family: var(--heading);
+      font-size: 2.4rem;
+      color: var(--taupe);
+      line-height: 1;
+    }
+
+    .about-badge-text {
+      font-size: 12px;
+      color: var(--taupe-light);
+      margin-top: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    .about-text-col { max-width: 480px; }
+
+    .about-body {
+      font-size: 15.5px;
+      color: var(--taupe-light);
+      font-weight: 300;
+      line-height: 1.9;
+      margin-bottom: 40px;
+    }
+
+    .about-features { display: flex; flex-direction: column; gap: 22px; }
+
+    .about-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .about-feature-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 14px;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s var(--ease);
+    }
+
+    .about-feature:hover .about-feature-icon {
+      background: var(--taupe);
+      transform: scale(1.05);
+    }
+
+    .about-feature-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--blush);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.3s;
+    }
+
+    .about-feature:hover .about-feature-icon svg { stroke: var(--white); }
+
+    .about-feature h4 {
+      font-size: 15px;
+      font-weight: 600;
+      font-family: var(--body);
+      color: var(--taupe);
+      margin-bottom: 3px;
+    }
+
+    .about-feature p { font-size: 13.5px; color: var(--taupe-light); font-weight: 300; line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 56px; }
+      .about-visual { max-width: 400px; margin: 0 auto; }
+      .about-text-col { max-width: 100%; text-align: center; }
+      .about-body { text-align: center; }
+      .about-features { align-items: center; }
+      .about-feature { text-align: left; }
+    }
+
+    /* ═══════════════════════════════════════════
+       STATS
+    ═══════════════════════════════════════════ */
+    .stats-band {
+      padding: 60px 0;
+      background: var(--cream);
+      border-top: 1px solid rgba(212,197,176,0.2);
+      border-bottom: 1px solid rgba(212,197,176,0.2);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .stat-item { text-align: center; position: relative; }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--sand), transparent);
+    }
+
+    .stat-number {
+      font-family: var(--heading);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--taupe);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-text { font-size: 13px; color: var(--taupe-light); }
+
+    @media (max-width: 700px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .stat-item:nth-child(2)::after { display: none; }
+    }
+
+    @media (max-width: 420px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .stat-item::after { display: none !important; }
+    }
+
+    /* ═══════════════════════════════════════════
+       SERVICES
+    ═══════════════════════════════════════════ */
+    .services {
+      padding: var(--pad) 0;
+      background: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.5s var(--ease);
+      border: 1px solid rgba(212,197,176,0.12);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 32px 80px rgba(92,74,58,0.1);
+      border-color: rgba(212,197,176,0.25);
+    }
+
+    .service-card-image {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s var(--ease);
+    }
+
+    .service-card:hover .service-card-image img {
+      transform: scale(1.08);
+    }
+
+    .service-card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(92,74,58,0.06) 100%);
+      pointer-events: none;
+    }
+
+    .service-badge-float {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--taupe);
+      z-index: 2;
+      box-shadow: 0 4px 16px rgba(92,74,58,0.08);
+    }
+
+    .service-badge-float .price-tag { color: var(--blush); }
+
+    .service-card-body {
+      padding: 28px 28px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-duration {
+      font-size: 12px;
+      color: var(--taupe-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .service-duration svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--sand);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .service-card h3 {
+      font-size: 1.35rem;
+      color: var(--taupe);
+      margin-bottom: 12px;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--taupe-light);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      font-weight: 300;
+      flex: 1;
+    }
+
+    @media (max-width: 420px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════════
+       GALLERY BAND
+    ═══════════════════════════════════════════ */
+    .gallery-band {
+      padding: 0;
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 8px;
+      animation: gallery-scroll 40s linear infinite;
+      width: max-content;
+    }
+
+    .gallery-track img {
+      height: 280px;
+      width: auto;
+      object-fit: cover;
+      border-radius: 8px;
+      filter: grayscale(15%) brightness(1.02);
+      transition: all 0.5s var(--ease);
+    }
+
+    .gallery-track img:hover {
+      filter: grayscale(0%) brightness(1.05);
+      transform: scale(1.03);
+    }
+
+    @keyframes gallery-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-track img { height: 180px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       HOW IT WORKS
+    ═══════════════════════════════════════════ */
+    .process {
+      padding: var(--pad) 0;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--heading);
+      font-size: clamp(6rem, 20vw, 18rem);
+      font-weight: 700;
+      color: rgba(212,197,176,0.05);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 64px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 56px;
+      left: 16%;
+      right: 16%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--sand), var(--sand), transparent);
+    }
+
+    .step { text-align: center; position: relative; }
+
+    .step-icon {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      position: relative;
+      z-index: 2;
+      background: var(--white);
+      border: 1px solid rgba(212,197,176,0.25);
+      box-shadow: 0 8px 36px rgba(92,74,58,0.04);
+      transition: all 0.45s var(--ease);
+    }
+
+    .step:hover .step-icon {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 56px rgba(92,74,58,0.08);
+      border-color: var(--blush);
+    }
+
+    .step-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--taupe);
+      fill: none;
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .step-num {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blush), var(--gold-soft));
+      color: var(--white);
+      font-family: var(--heading);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(232,180,160,0.3);
+    }
+
+    .step h3 { font-size: 1.3rem; color: var(--taupe); margin-bottom: 12px; }
+
+    .step p {
+      font-size: 14.5px;
+      color: var(--taupe-light);
+      font-weight: 300;
+      max-width: 260px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    @media (max-width: 768px) {
+      .steps { grid-template-columns: 1fr; gap: 48px; }
+      .steps::before { display: none; }
+    }
+
+    /* ═══════════════════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════════════════ */
+    .testimonials {
+      padding: var(--pad) 0;
+      background: var(--white);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .testimonial-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 48px 36px 40px;
+      position: relative;
+      transition: all 0.5s var(--ease);
+      border: 1px solid transparent;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 64px rgba(92,74,58,0.06);
+      border-color: rgba(212,197,176,0.2);
+    }
+
+    .testimonial-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 36px;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blush), var(--gold-soft));
+      border-radius: 0 0 4px 4px;
+    }
+
+    .quote-mark {
+      font-family: var(--heading);
+      font-size: 5.5rem;
+      line-height: 0.5;
+      background: linear-gradient(135deg, var(--blush-light), var(--sand));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-stars svg { width: 15px; height: 15px; fill: var(--gold-soft); }
+
+    .testimonial-card blockquote {
+      font-size: 16px;
+      font-style: italic;
+      font-family: var(--heading);
+      color: var(--taupe);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+
+    .testimonial-footer { display: flex; align-items: center; gap: 14px; }
+
+    .testimonial-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--heading);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .testimonial-card:nth-child(1) .testimonial-avatar { background: linear-gradient(135deg, var(--blush), #D4A090); }
+    .testimonial-card:nth-child(2) .testimonial-avatar { background: linear-gradient(135deg, var(--sand), #B8A690); }
+    .testimonial-card:nth-child(3) .testimonial-avatar { background: linear-gradient(135deg, var(--gold-soft), #B4986C); }
+
+    .testimonial-name { font-size: 14px; font-weight: 600; color: var(--taupe); }
+    .testimonial-role { font-size: 12px; color: var(--taupe-light); font-weight: 300; }
+
+    @media (max-width: 900px) {
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto; margin-top: 56px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       CTA
+    ═══════════════════════════════════════════ */
+    .cta {
+      padding: var(--pad) 0;
+      background: linear-gradient(135deg, var(--taupe) 0%, var(--taupe-dark) 50%, var(--taupe-darker) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-blob-1 {
+      width: 600px;
+      height: 600px;
+      top: -30%;
+      right: -15%;
+      background: radial-gradient(circle, rgba(232,180,160,0.08) 0%, transparent 70%);
+    }
+
+    .cta-blob-2 {
+      width: 400px;
+      height: 400px;
+      bottom: -25%;
+      left: -12%;
+      background: radial-gradient(circle, rgba(196,168,124,0.06) 0%, transparent 70%);
+    }
+
+    .cta-content { position: relative; z-index: 2; text-align: center; }
+    .cta .section-label { color: rgba(232,180,160,0.6); }
+
+    .cta h2 {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      color: var(--white);
+      margin-bottom: 20px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+
+    .cta h2 em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--blush-light), var(--gold-soft));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta p {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      margin-bottom: 44px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    .footer {
+      padding: 64px 0 36px;
+      background: var(--taupe-darker);
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-logo {
+      font-family: var(--heading);
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span { color: var(--blush); }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.35);
+      font-weight: 300;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 20px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      transition: all 0.3s;
+      padding: 5px 0;
+      font-weight: 300;
+    }
+
+    .footer-col a:hover { color: var(--white); transform: translateX(4px); }
+
+    .footer-bar {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bar p { font-size: 13px; color: rgba(255,255,255,0.3); font-weight: 300; }
+    .footer-bar a { color: var(--blush-light); transition: color 0.3s; }
+    .footer-bar a:hover { color: var(--white); }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .footer-brand p { margin: 0 auto; }
+      .footer-bar { justify-content: center; text-align: center; }
+    }
+
+    /* ═══════════════════════════════════════════
+       BACK TO TOP
+    ═══════════════════════════════════════════ */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1px solid rgba(212,197,176,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 100;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s var(--ease);
+      box-shadow: 0 4px 24px rgba(92,74,58,0.08);
+    }
+
+    .back-to-top.show { opacity: 1; transform: translateY(0); }
+
+    .back-to-top:hover {
+      background: var(--taupe);
+      border-color: var(--taupe);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(92,74,58,0.2);
+    }
+
+    .back-to-top svg { width: 18px; height: 18px; stroke: var(--taupe); fill: none; stroke-width: 2; transition: stroke 0.3s; }
+    .back-to-top:hover svg { stroke: var(--white); }
+
+    /* ═══════════════════════════════════════════
+       A11Y & MOTION
+    ═══════════════════════════════════════════ */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    :focus-visible { outline: 2px solid var(--blush); outline-offset: 3px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .marquee-track, .gallery-track { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ NAV ═══════ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="VONA Skincare Home">VONA<span>.</span></a>
+      <div class="nav-links" id="navLinks" role="menubar">
+        <a href="#about" role="menuitem">About</a>
+        <a href="#services" role="menuitem">Services</a>
+        <a href="#process" role="menuitem">Process</a>
+        <a href="#testimonials" role="menuitem">Reviews</a>
+        <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-primary" target="_blank" rel="noopener noreferrer" role="menuitem">Book Now</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero" id="hero" aria-label="Welcome to VONA Skincare">
+    <div class="hero-content">
+      <p class="hero-tagline">Your skin deserves the best</p>
+      <h1>Glow from<br><em>within.</em></h1>
+      <p class="hero-sub">Personalized skincare treatments tailored to you — because your skin tells your story.</p>
+      <div class="hero-buttons">
+        <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book Your Treatment <span class="btn-arrow">&rarr;</span></a>
+        <a href="#services" class="btn btn-secondary">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-image-side">
+      <img src="https://static.glossgenius.com/public/salon/c6a7bdb012f4612097cc4e2df35cc91ce1613dd0/website_cover_image/0e4f200b0acf752bf849abc118741099.png" alt="VONA Skincare studio — luxury skincare treatments">
+      <div class="hero-image-overlay"></div>
+      <div class="hero-image-overlay-bottom"></div>
+      <div class="hero-float-badge">
+        <div class="hero-float-badge-number">10+</div>
+        <div class="hero-float-badge-text">Years of Expertise</div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-indicator"></div>
+    </div>
+  </section>
+
+  <!-- ═══════ MARQUEE ═══════ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-dot"></span>Hydrodermabrasion</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Deep Pore Cleansing</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Chemical Peels</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Anti-Aging</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Facial Massage</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Rosacea Care</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Lymphatic Drainage</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Carboxy Therapy</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Peptide Firming</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Personalized Facials</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Hydrodermabrasion</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Deep Pore Cleansing</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Chemical Peels</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Anti-Aging</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Facial Massage</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Rosacea Care</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Lymphatic Drainage</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Carboxy Therapy</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Peptide Firming</div>
+      <div class="marquee-item"><span class="marquee-dot"></span>Personalized Facials</div>
+    </div>
+  </div>
+
+  <!-- ═══════ ABOUT ═══════ -->
+  <section class="about" id="about" aria-label="About VONA Skincare">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-img-wrapper">
+            <img src="https://static.glossgenius.com/public/user/b0329a37071eae37bc77e081465a488ba89c7d30/avatar/3062d22cbaec0c173eaddb304092b836.jpeg" alt="Nataliia — VONA Skincare founder and cosmetologist" loading="lazy">
+          </div>
+          <div class="about-frame" aria-hidden="true"></div>
+          <div class="about-badge">
+            <div class="about-badge-number">10+</div>
+            <div class="about-badge-text">Years Experience</div>
+          </div>
+        </div>
+        <div class="about-text-col">
+          <p class="section-label reveal d1">The Studio</p>
+          <h2 class="section-title reveal d2" style="text-align:left;">Meet VONA<br>Skincare</h2>
+          <div class="divider reveal d3" style="margin-left:0;"></div>
+          <p class="about-body reveal d4" style="text-align:left;">At VONA Skincare, every treatment is a ritual. With expert hands and a deep understanding of skin science, I create personalized experiences that address your skin's unique needs — from deep cleansing to advanced anti-aging. You'll leave not just glowing, but truly cared for.</p>
+          <div class="about-features">
+            <div class="about-feature reveal d4">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div>
+                <h4>Certified Expertise</h4>
+                <p>Professional cosmetologist with advanced European training</p>
+              </div>
+            </div>
+            <div class="about-feature reveal d5">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div>
+                <h4>100% Personalized</h4>
+                <p>Every treatment tailored to your unique skin needs</p>
+              </div>
+            </div>
+            <div class="about-feature reveal d6">
+              <div class="about-feature-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              </div>
+              <div>
+                <h4>Visible Results</h4>
+                <p>Premium products &amp; techniques for real transformations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ STATS ═══════ -->
+  <div class="stats-band" aria-label="Key statistics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal d1">
+          <div class="stat-number" data-count="10">0+</div>
+          <div class="stat-text">Years Experience</div>
+        </div>
+        <div class="stat-item reveal d2">
+          <div class="stat-number" data-count="500">0+</div>
+          <div class="stat-text">Happy Clients</div>
+        </div>
+        <div class="stat-item reveal d3">
+          <div class="stat-number" data-count="10">0</div>
+          <div class="stat-text">Signature Treatments</div>
+        </div>
+        <div class="stat-item reveal d4">
+          <div class="stat-number" data-count="100">0%</div>
+          <div class="stat-text">Personalized Care</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SERVICES ═══════ -->
+  <section class="services" id="services" aria-label="Services and pricing">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-label reveal">What I Offer</p>
+        <h2 class="section-title reveal d1">My Specialties</h2>
+        <p class="section-subtitle reveal d2">Every service is thoughtfully designed for your skin.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- 1 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/306fb6067e45f77eec8fbdd0f07476ba3616c3ec/image/115d78016998086097d5a65e61986785.jpg" alt="HydroDermabrasion Facial treatment" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">$150</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>60 Minutes</div>
+            <h3>HydroDermabrasion Facial</h3>
+            <p>Tackles fine lines, acne scars, dullness, and uneven texture. Combines vacuum suction, deep exfoliation with a diamond tip, and a hydrating infusion. Concludes with a restorative mask and relaxing hand massage.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/7b93e9f7af05947813e75cd2e587935ff9bc40f1/image/f3dbfb39ee1d744af2cd34ea01e1cc95.jpg" alt="Deep Pore Cleansing treatment" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">$135</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>90 Minutes</div>
+            <h3>Deep Pore Cleansing</h3>
+            <p>Begins with deep cleansing and a softening mask to loosen blackheads, followed by ultrasonic cleaning and thorough extraction. Darsonval stimulates circulation and healing, finishing with a soothing customized mask.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/5eda1fdfd888261df76f75058c37a028bb677878/image/5a9336cb5a50fa5028226ff7c215698a.jpg" alt="Acne Facial Treatment" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">$110</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>60 Minutes</div>
+            <h3>Acne Facial Treatment</h3>
+            <p>An enzyme mask exfoliates and reduces excess oil, followed by a therapeutic oxygen mask and biotic mask to balance the skin's microbiome. Concludes with a hand and scalp massage plus red light therapy.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/b01becbe5ead4b8163fa1430725510f6645e2212/image/e63e98ffa7e87d485696699fb164cc41.jpg" alt="Oxygen Facial for Rosacea" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">$110</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>60 Minutes</div>
+            <h3>Oxygen Facial for Rosacea</h3>
+            <p>Deep cleanse and gentle exfoliation, followed by a healing oxygen mask to reduce redness and inflammation. Includes a restorative mask, hand massage, and complimentary Red Light Therapy. Ideal for sensitive and rosacea-prone skin.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/ffcd62ef4bded20698aa5f11e5e534f02764ac5c/image/acae492aee0c901875698e0159c4140e.jpg" alt="Customized Facial treatment" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">$100</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>60 Minutes</div>
+            <h3>Customized Facial</h3>
+            <p>A personalized facial with deep cleanse and enzyme peel. Includes a soothing scalp massage and a choice of LED therapy, ultrasound, or microcurrent based on your skin's needs. No extractions — refreshed, balanced, glowing skin guaranteed.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/326253da794491d5bb1ddc48e805aaa5c1c4668e/image/0c8845b58ed93c0645ddad5f6aa9196a.jpg" alt="Firming Peptide Facial" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">$130</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>90 Minutes</div>
+            <h3>Firming Peptide Facial</h3>
+            <p>Advanced anti-aging treatment to boost collagen and firm skin. Cleanse, exfoliation, enzyme mask, facial massage, and a deep-penetrating peptide firming mask worn for 30 minutes. Immediate lifting effect. Optional peel for deeper results.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/b7db38add39035086eb584d0c176c4a19d76e24c/image/d4bf5af7db9eb883ad41e8da4491b935.jpg" alt="Chemical Peel treatment" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">From $80</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>30 Minutes</div>
+            <h3>Chemical Peel</h3>
+            <p>The right peel is carefully selected based on your skin's current condition. Exfoliates dead cells, evens skin tone, reduces fine lines, and improves texture. Available in gentle all-season or deeper formulations.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/46a717e854f0d15881ec38ffac2582f4dc396a16/image/b3ba4b90777350f1a11589b1a36fd173.jpg" alt="Spanish Facial Massage" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">$70</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>50 Minutes</div>
+            <h3>Spanish Facial Massage</h3>
+            <p>Rhythmic movements and precise techniques relax muscles, improve blood flow, and enhance lymphatic drainage. Focuses on sculpting and lifting the lower face. Includes a hand massage and customized mask.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/ad0019336fce961521e0bc394d2330fd400365f0/image/36b399186fc021349e5ea49878ea7f67.jpg" alt="Lymphatic Drainage Facial Massage" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">$70</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>50 Minutes</div>
+            <h3>Lymphatic Drainage Facial Massage</h3>
+            <p>Stimulates the lymphatic system to reduce puffiness, eliminate toxins, and sculpt facial contours. Promotes better circulation for toned, refreshed skin. Includes a hand massage and customized mask.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="service-card reveal">
+          <div class="service-card-image">
+            <img src="https://static.glossgenius.com/public/service/c585c1c85f360c0ef86fa348e674795c99bab1ab/image/fa55f518b92d26c7fd7c3d7b725ac938.jpg" alt="Carboxy Therapy Facial" loading="lazy">
+            <div class="service-badge-float"><span class="price-tag">$110</span></div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-duration"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>15 Minutes</div>
+            <h3>Carboxy Therapy Facial</h3>
+            <p>Boosts oxygen flow, improves circulation, and supports lymphatic drainage. Strengthens capillaries, reduces redness, stimulates collagen. Perfect for dull skin, acne, puffiness, and couperose. Visible glow after one session — ideal pre-event facial.</p>
+            <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-card" target="_blank" rel="noopener noreferrer">Book This <span class="btn-arrow">&rarr;</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ GALLERY BAND ═══════ -->
+  <div class="gallery-band" aria-label="Treatment gallery">
+    <div class="gallery-track">
+      <img src="https://static.glossgenius.com/public/service/306fb6067e45f77eec8fbdd0f07476ba3616c3ec/image/115d78016998086097d5a65e61986785.jpg" alt="HydroDermabrasion" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/7b93e9f7af05947813e75cd2e587935ff9bc40f1/image/f3dbfb39ee1d744af2cd34ea01e1cc95.jpg" alt="Deep Pore Cleansing" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/5eda1fdfd888261df76f75058c37a028bb677878/image/5a9336cb5a50fa5028226ff7c215698a.jpg" alt="Acne Facial" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/b01becbe5ead4b8163fa1430725510f6645e2212/image/e63e98ffa7e87d485696699fb164cc41.jpg" alt="Rosacea Facial" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/ffcd62ef4bded20698aa5f11e5e534f02764ac5c/image/acae492aee0c901875698e0159c4140e.jpg" alt="Customized Facial" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/326253da794491d5bb1ddc48e805aaa5c1c4668e/image/0c8845b58ed93c0645ddad5f6aa9196a.jpg" alt="Peptide Facial" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/b7db38add39035086eb584d0c176c4a19d76e24c/image/d4bf5af7db9eb883ad41e8da4491b935.jpg" alt="Chemical Peel" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/46a717e854f0d15881ec38ffac2582f4dc396a16/image/b3ba4b90777350f1a11589b1a36fd173.jpg" alt="Spanish Massage" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/ad0019336fce961521e0bc394d2330fd400365f0/image/36b399186fc021349e5ea49878ea7f67.jpg" alt="Lymphatic Drainage" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/c585c1c85f360c0ef86fa348e674795c99bab1ab/image/fa55f518b92d26c7fd7c3d7b725ac938.jpg" alt="Carboxy Therapy" loading="lazy">
+      <!-- duplicate for seamless loop -->
+      <img src="https://static.glossgenius.com/public/service/306fb6067e45f77eec8fbdd0f07476ba3616c3ec/image/115d78016998086097d5a65e61986785.jpg" alt="HydroDermabrasion" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/7b93e9f7af05947813e75cd2e587935ff9bc40f1/image/f3dbfb39ee1d744af2cd34ea01e1cc95.jpg" alt="Deep Pore Cleansing" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/5eda1fdfd888261df76f75058c37a028bb677878/image/5a9336cb5a50fa5028226ff7c215698a.jpg" alt="Acne Facial" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/b01becbe5ead4b8163fa1430725510f6645e2212/image/e63e98ffa7e87d485696699fb164cc41.jpg" alt="Rosacea Facial" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/ffcd62ef4bded20698aa5f11e5e534f02764ac5c/image/acae492aee0c901875698e0159c4140e.jpg" alt="Customized Facial" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/326253da794491d5bb1ddc48e805aaa5c1c4668e/image/0c8845b58ed93c0645ddad5f6aa9196a.jpg" alt="Peptide Facial" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/b7db38add39035086eb584d0c176c4a19d76e24c/image/d4bf5af7db9eb883ad41e8da4491b935.jpg" alt="Chemical Peel" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/46a717e854f0d15881ec38ffac2582f4dc396a16/image/b3ba4b90777350f1a11589b1a36fd173.jpg" alt="Spanish Massage" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/ad0019336fce961521e0bc394d2330fd400365f0/image/36b399186fc021349e5ea49878ea7f67.jpg" alt="Lymphatic Drainage" loading="lazy">
+      <img src="https://static.glossgenius.com/public/service/c585c1c85f360c0ef86fa348e674795c99bab1ab/image/fa55f518b92d26c7fd7c3d7b725ac938.jpg" alt="Carboxy Therapy" loading="lazy">
+    </div>
+  </div>
+
+  <!-- ═══════ HOW IT WORKS ═══════ -->
+  <section class="process" id="process" aria-label="How it works">
+    <div class="process-bg" aria-hidden="true">GLOW</div>
+    <div class="container">
+      <div class="text-center">
+        <p class="section-label reveal">Simple &amp; Seamless</p>
+        <h2 class="section-title reveal d1">How It Works</h2>
+        <p class="section-subtitle reveal d2">Three simple steps to radiant, beautiful skin.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal d1">
+          <div class="step-icon">
+            <span class="step-num">1</span>
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3>Book Online</h3>
+          <p>Choose your treatment and pick a time that works for you.</p>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-icon">
+            <span class="step-num">2</span>
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h3>Come In &amp; Relax</h3>
+          <p>Arrive, unwind, and let the ritual begin.</p>
+        </div>
+        <div class="step reveal d3">
+          <div class="step-icon">
+            <span class="step-num">3</span>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <h3>Leave Glowing</h3>
+          <p>Walk out with radiant, refreshed, beautiful skin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ TESTIMONIALS ═══════ -->
+  <section class="testimonials" id="testimonials" aria-label="Client testimonials">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-label reveal">Kind Words</p>
+        <h2 class="section-title reveal d1">Clients Love VONA</h2>
+        <p class="section-subtitle reveal d2">Real stories from real clients who trusted us with their skin.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal d1">
+          <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>I've never felt so comfortable and taken care of. My skin hasn't looked this good in years.</blockquote>
+          <div class="testimonial-footer">
+            <div class="testimonial-avatar">S</div>
+            <div><div class="testimonial-name">Sarah M.</div><div class="testimonial-role">Regular Client</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal d2">
+          <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>Nataliia is incredibly knowledgeable and the results are amazing. I'm a client for life.</blockquote>
+          <div class="testimonial-footer">
+            <div class="testimonial-avatar">E</div>
+            <div><div class="testimonial-name">Emily R.</div><div class="testimonial-role">Regular Client</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal d3">
+          <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>The HydroDermabrasion was life-changing. My skin glowed for weeks!</blockquote>
+          <div class="testimonial-footer">
+            <div class="testimonial-avatar">J</div>
+            <div><div class="testimonial-name">Jessica T.</div><div class="testimonial-role">Regular Client</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA ═══════ -->
+  <section class="cta" id="cta" aria-label="Book your appointment">
+    <div class="cta-blob cta-blob-1" aria-hidden="true"></div>
+    <div class="cta-blob cta-blob-2" aria-hidden="true"></div>
+    <div class="container">
+      <div class="cta-content">
+        <p class="section-label reveal">Limited Availability</p>
+        <h2 class="reveal d1">Ready to <em>glow?</em></h2>
+        <p class="reveal d2">Book your personalized skincare treatment today. Your best skin is one appointment away.</p>
+        <div class="reveal d3">
+          <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-white" target="_blank" rel="noopener noreferrer">Book Now <span class="btn-arrow">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">VONA<span>.</span></div>
+          <p>Personalized skincare treatments tailored to your unique beauty. Your skin deserves the best.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#process">How It Works</a>
+          <a href="#testimonials">Reviews</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get Started</h4>
+          <a href="https://nataliiahorb.glossgenius.com/book" target="_blank" rel="noopener noreferrer">Book Online</a>
+          <a href="#services">View Pricing</a>
+          <a href="#cta">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <p>&copy; 2025 VONA Skincare. All rights reserved.</p>
+        <p>Booking powered by <a href="https://www.glossgenius.com" target="_blank" rel="noopener noreferrer">GlossGenius</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════ BACK TO TOP ═══════ -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ═══════ JS ═══════ -->
+  <script>
+    /* Nav */
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 80), { passive: true });
+
+    /* Mobile */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function toggleMenu() {
+      const o = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active');
+      navOverlay.classList.toggle('active');
+      navToggle.setAttribute('aria-expanded', o);
+      document.body.style.overflow = o ? 'hidden' : '';
+    }
+
+    navToggle.addEventListener('click', toggleMenu);
+    navOverlay.addEventListener('click', toggleMenu);
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.contains('open') && toggleMenu()));
+
+    /* Reveal */
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObs.observe(el));
+
+    /* Stat counters */
+    let counted = false;
+    const statsObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !counted) {
+          counted = true;
+          document.querySelectorAll('.stat-number[data-count]').forEach(el => {
+            const target = +el.dataset.count;
+            const suffix = el.textContent.replace(/[0-9]/g, '');
+            const start = performance.now();
+            (function anim(now) {
+              const p = Math.min((now - start) / 2000, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              el.textContent = Math.floor(eased * target) + suffix;
+              if (p < 1) requestAnimationFrame(anim);
+            })(start);
+          });
+          statsObs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const sb = document.querySelector('.stats-band');
+    if (sb) statsObs.observe(sb);
+
+    /* Smooth scroll */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) { e.preventDefault(); window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - nav.offsetHeight - 20, behavior: 'smooth' }); }
+      });
+    });
+
+    /* Back to top */
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => btt.classList.toggle('show', scrollY > 600), { passive: true });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    /* Parallax hero image on scroll */
+    const heroImg = document.querySelector('.hero-image-side img');
+    if (heroImg) {
+      window.addEventListener('scroll', () => {
+        if (scrollY < window.innerHeight) {
+          heroImg.style.transform = `scale(1) translateY(${scrollY * 0.08}px)`;
+        }
+      }, { passive: true });
+    }
+  </script>
+
+</body>
+</html>
