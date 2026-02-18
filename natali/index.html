@@ -1352,6 +1352,341 @@
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
       .marquee-track, .gallery-track { animation: none !important; }
     }
+
+    /* ═══════════════════════════════════════════
+       BEFORE & AFTER GALLERY
+    ═══════════════════════════════════════════ */
+    .before-after {
+      padding: var(--pad) 0;
+      background: var(--cream);
+    }
+
+    .ba-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .ba-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 1;
+      cursor: col-resize;
+      box-shadow: 0 8px 32px rgba(92,74,58,0.06);
+      border: 1px solid rgba(212,197,176,0.15);
+    }
+
+    .ba-card .ba-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ba-card .ba-after {
+      clip-path: inset(0 50% 0 0);
+      z-index: 2;
+    }
+
+    .ba-card .ba-before {
+      z-index: 1;
+    }
+
+    .ba-slider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: var(--white);
+      z-index: 4;
+      transform: translateX(-50%);
+      pointer-events: none;
+      box-shadow: 0 0 8px rgba(0,0,0,0.15);
+    }
+
+    .ba-slider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+
+    .ba-slider::after {
+      content: '↔';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      color: var(--taupe);
+      z-index: 1;
+    }
+
+    .ba-label {
+      position: absolute;
+      bottom: 14px;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      z-index: 5;
+      backdrop-filter: blur(8px);
+    }
+
+    .ba-label-before {
+      right: 14px;
+      background: rgba(92,74,58,0.75);
+      color: var(--white);
+    }
+
+    .ba-label-after {
+      left: 14px;
+      background: rgba(255,255,255,0.85);
+      color: var(--taupe);
+    }
+
+    @media (max-width: 768px) {
+      .ba-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .ba-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; margin-top: 56px; }
+    }
+
+    /* ═══════════════════════════════════════════
+       FAQ ACCORDION
+    ═══════════════════════════════════════════ */
+    .faq {
+      padding: var(--pad) 0;
+      background: var(--white);
+    }
+
+    .faq-grid {
+      max-width: 760px;
+      margin: 56px auto 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(212,197,176,0.2);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--heading);
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      font-weight: 500;
+      color: var(--taupe);
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover { color: var(--blush); }
+
+    .faq-icon {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s var(--ease);
+    }
+
+    .faq-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--taupe);
+      fill: none;
+      stroke-width: 2;
+      transition: transform 0.4s var(--ease);
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--taupe);
+    }
+
+    .faq-item.open .faq-icon svg {
+      stroke: var(--white);
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s var(--ease), padding 0.5s var(--ease);
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 24px;
+      font-size: 15px;
+      color: var(--taupe-light);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* ═══════════════════════════════════════════
+       FIND US / MAP
+    ═══════════════════════════════════════════ */
+    .find-us {
+      padding: var(--pad) 0 0;
+      background: var(--cream);
+    }
+
+    .find-us-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      margin-top: 56px;
+    }
+
+    .find-us-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--taupe);
+    }
+
+    .find-us-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .find-us-detail-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 12px;
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .find-us-detail-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--blush);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .find-us-detail p {
+      font-size: 14.5px;
+      color: var(--taupe-light);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .find-us-detail strong {
+      font-weight: 600;
+      color: var(--taupe);
+      display: block;
+      margin-bottom: 2px;
+      font-size: 14px;
+    }
+
+    .map-wrapper {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(92,74,58,0.08);
+      border: 1px solid rgba(212,197,176,0.15);
+      aspect-ratio: 4/3;
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .find-us-grid { grid-template-columns: 1fr; }
+      .map-wrapper { aspect-ratio: 16/10; }
+    }
+
+    /* ═══════════════════════════════════════════
+       STICKY MOBILE BOOK BAR
+    ═══════════════════════════════════════════ */
+    .sticky-book {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .sticky-book {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        background: rgba(250,247,242,0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 12px 20px;
+        box-shadow: 0 -2px 20px rgba(92,74,58,0.08);
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-top: 1px solid rgba(212,197,176,0.15);
+        transform: translateY(100%);
+        transition: transform 0.4s var(--ease);
+      }
+
+      .sticky-book.show { transform: translateY(0); }
+
+      .sticky-book-text {
+        font-family: var(--heading);
+        font-size: 15px;
+        color: var(--taupe);
+        font-weight: 500;
+      }
+
+      .sticky-book-text span {
+        display: block;
+        font-family: var(--body);
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--taupe-light);
+      }
+
+      .sticky-book .btn {
+        padding: 14px 28px;
+        font-size: 11px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* Adjust footer and back-to-top for sticky bar */
+      .footer { padding-bottom: 100px; }
+      .back-to-top { bottom: 80px; }
+    }
   </style>
 </head>
 <body>
@@ -1781,6 +2116,156 @@
     </div>
   </section>
 
+  <!-- ═══════ BEFORE & AFTER ═══════ -->
+  <section class="before-after" id="results" aria-label="Before and after results">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-label reveal">Transformations</p>
+        <h2 class="section-title reveal d1">Before &amp; After</h2>
+        <p class="section-subtitle reveal d2">Drag the slider to see real results from our treatments.</p>
+      </div>
+      <div class="ba-grid">
+        <div class="ba-card reveal d1" data-ba>
+          <img class="ba-img ba-before" src="https://static.glossgenius.com/public/service/306fb6067e45f77eec8fbdd0f07476ba3616c3ec/image/115d78016998086097d5a65e61986785.jpg" alt="Before HydroDermabrasion treatment" loading="lazy">
+          <img class="ba-img ba-after" src="https://static.glossgenius.com/public/service/ffcd62ef4bded20698aa5f11e5e534f02764ac5c/image/acae492aee0c901875698e0159c4140e.jpg" alt="After HydroDermabrasion treatment" loading="lazy">
+          <div class="ba-slider"></div>
+          <span class="ba-label ba-label-after">After</span>
+          <span class="ba-label ba-label-before">Before</span>
+        </div>
+        <div class="ba-card reveal d2" data-ba>
+          <img class="ba-img ba-before" src="https://static.glossgenius.com/public/service/5eda1fdfd888261df76f75058c37a028bb677878/image/5a9336cb5a50fa5028226ff7c215698a.jpg" alt="Before Acne Facial treatment" loading="lazy">
+          <img class="ba-img ba-after" src="https://static.glossgenius.com/public/service/326253da794491d5bb1ddc48e805aaa5c1c4668e/image/0c8845b58ed93c0645ddad5f6aa9196a.jpg" alt="After Acne Facial treatment" loading="lazy">
+          <div class="ba-slider"></div>
+          <span class="ba-label ba-label-after">After</span>
+          <span class="ba-label ba-label-before">Before</span>
+        </div>
+        <div class="ba-card reveal d3" data-ba>
+          <img class="ba-img ba-before" src="https://static.glossgenius.com/public/service/7b93e9f7af05947813e75cd2e587935ff9bc40f1/image/f3dbfb39ee1d744af2cd34ea01e1cc95.jpg" alt="Before Deep Pore Cleansing" loading="lazy">
+          <img class="ba-img ba-after" src="https://static.glossgenius.com/public/service/b01becbe5ead4b8163fa1430725510f6645e2212/image/e63e98ffa7e87d485696699fb164cc41.jpg" alt="After Deep Pore Cleansing" loading="lazy">
+          <div class="ba-slider"></div>
+          <span class="ba-label ba-label-after">After</span>
+          <span class="ba-label ba-label-before">Before</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FAQ ═══════ -->
+  <section class="faq" id="faq" aria-label="Frequently asked questions">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-label reveal">Got Questions?</p>
+        <h2 class="section-title reveal d1">Frequently Asked</h2>
+        <p class="section-subtitle reveal d2">Everything you need to know before your visit.</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            What should I do before my appointment?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Please stop using acids and retinol 7 days before your appointment. Come with a clean face — no makeup if possible. This helps us give you the best results from your treatment.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            How often should I get a facial?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">For optimal results, I recommend getting a facial every 4–6 weeks. This follows your skin's natural renewal cycle and allows us to track progress and adjust your treatment plan accordingly.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            What is your cancellation policy?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Cancellations made less than 24 hours before the appointment are subject to a 50% fee. No-shows are charged 100% of the service price. We understand life happens — please just give us enough notice to fill the spot!</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Which facial is best for first-timers?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">The Customized Facial ($100 / 60 min) is a perfect starting point. It's tailored entirely to your skin's current needs without extractions, so it's gentle yet effective. From there, I can recommend a more targeted treatment plan.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Is there downtime after a chemical peel?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">It depends on the peel strength. Gentle all-season peels have minimal downtime — you may see slight flaking for 2–3 days. Deeper peels may involve 5–7 days of peeling. I'll select the right peel for your skin and walk you through aftercare.</div></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Do you offer payment plans?
+            <span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes! Buy Now, Pay Later is available through our booking system for services between $50–$4,000. You can split your payment into installments at checkout when booking online.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FIND US / MAP ═══════ -->
+  <section class="find-us" id="location" aria-label="Find us">
+    <div class="container">
+      <div class="text-center">
+        <p class="section-label reveal">Visit Us</p>
+        <h2 class="section-title reveal d1">Find VONA Skincare</h2>
+        <p class="section-subtitle reveal d2">We'd love to welcome you to our studio.</p>
+      </div>
+      <div class="find-us-grid">
+        <div class="find-us-info reveal">
+          <h3>Studio Details</h3>
+          <div class="find-us-detail">
+            <div class="find-us-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <p><strong>Address</strong>10614 Providence Rd, Suite 13<br>Charlotte, NC 28277</p>
+            </div>
+          </div>
+          <div class="find-us-detail">
+            <div class="find-us-detail-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <p><strong>Phone</strong>(980) 339-2269</p>
+            </div>
+          </div>
+          <div class="find-us-detail">
+            <div class="find-us-detail-icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <p><strong>Hours</strong>
+              Mon, Fri: 8AM – 7PM<br>
+              Wed: 8AM – 5PM<br>
+              Sat: 9AM – 5PM<br>
+              Sun, Tue, Thu: Closed</p>
+            </div>
+          </div>
+          <div class="find-us-detail">
+            <div class="find-us-detail-icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <div>
+              <p><strong>Instagram</strong><a href="https://www.instagram.com/nataliia.horb/" target="_blank" rel="noopener noreferrer" style="color:var(--blush);font-weight:500;">@nataliia.horb</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="map-wrapper reveal d2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.5!2d-80.7715023!3d35.0664277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8856a0241dfe0001%3A0x8856a0241dfe0001!2s10614+Providence+Rd+%23+13%2C+Charlotte%2C+NC+28277!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="VONA Skincare location on Google Maps">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════ CTA ═══════ -->
   <section class="cta" id="cta" aria-label="Book your appointment">
     <div class="cta-blob cta-blob-1" aria-hidden="true"></div>
@@ -1809,14 +2294,16 @@
           <h4>Quick Links</h4>
           <a href="#about">About</a>
           <a href="#services">Services</a>
-          <a href="#process">How It Works</a>
+          <a href="#results">Before &amp; After</a>
+          <a href="#faq">FAQ</a>
           <a href="#testimonials">Reviews</a>
         </div>
         <div class="footer-col">
           <h4>Get Started</h4>
           <a href="https://nataliiahorb.glossgenius.com/book" target="_blank" rel="noopener noreferrer">Book Online</a>
           <a href="#services">View Pricing</a>
-          <a href="#cta">Contact</a>
+          <a href="#location">Find Us</a>
+          <a href="https://www.instagram.com/nataliia.horb/" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
       </div>
       <div class="footer-bar">
@@ -1825,6 +2312,15 @@
       </div>
     </div>
   </footer>
+
+  <!-- ═══════ STICKY MOBILE BOOK BAR ═══════ -->
+  <div class="sticky-book" id="stickyBook">
+    <div class="sticky-book-text">
+      VONA Skincare
+      <span>Book your glow today</span>
+    </div>
+    <a href="https://nataliiahorb.glossgenius.com/book" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Book Now <span class="btn-arrow">&rarr;</span></a>
+  </div>
 
   <!-- ═══════ BACK TO TOP ═══════ -->
   <button class="back-to-top" id="backToTop" aria-label="Back to top">
@@ -1906,6 +2402,61 @@
         if (scrollY < window.innerHeight) {
           heroImg.style.transform = `scale(1) translateY(${scrollY * 0.08}px)`;
         }
+      }, { passive: true });
+    }
+
+    /* FAQ Accordion */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(openItem => {
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-answer').style.maxHeight = '0';
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* Before & After Slider */
+    document.querySelectorAll('[data-ba]').forEach(card => {
+      const afterImg = card.querySelector('.ba-after');
+      const slider = card.querySelector('.ba-slider');
+      let isDragging = false;
+
+      function updateSlider(x) {
+        const rect = card.getBoundingClientRect();
+        let pct = ((x - rect.left) / rect.width) * 100;
+        pct = Math.max(5, Math.min(95, pct));
+        afterImg.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        slider.style.left = pct + '%';
+      }
+
+      card.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
+      card.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); }, { passive: true });
+
+      window.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
+      window.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); }, { passive: true });
+
+      window.addEventListener('mouseup', () => isDragging = false);
+      window.addEventListener('touchend', () => isDragging = false);
+    });
+
+    /* Sticky Mobile Book Bar */
+    const stickyBook = document.getElementById('stickyBook');
+    if (stickyBook) {
+      window.addEventListener('scroll', () => {
+        stickyBook.classList.toggle('show', scrollY > 500);
       }, { passive: true });
     }
   </script>
